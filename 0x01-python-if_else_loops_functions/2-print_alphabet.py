@@ -1,3 +1,3 @@
 #!/usr/bin/python3
-var = chr(97)
-print (var)
+for i in range(97, 123):
+    print(chr(i).format(), end="")
