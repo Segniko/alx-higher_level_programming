@@ -1,3 +1,3 @@
 #!/usr/bin/python3
-var = ord('a)
+var = chr(97)
 print (var)
