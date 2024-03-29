@@ -12,4 +12,3 @@ if __name__ == '__main__':
     ERR_TXT = 'Error code: {}'
     status = response.status_code
     print(ERR_TXT.format(status) if (status >= 400) else response.text)
-
