@@ -1,21 +1,20 @@
 #!/usr/bin/node
+// Number of films with the given character ID
 const request = require('request');
-const apiUrl = process.argv[2];
+let num = 0;
 
-request.get(apiUrl, function (error, response, body) {
+request.get(process.argv[2], (error, response, body) => {
   if (error) {
     console.log(error);
   } else {
-    let countWedge = 0;
-    const films = JSON.parse(body).results;
-    for (let i = 0; i < films.length; i++) {
-      const charList = films[i].characters;
-      for (let j = 0; j < charList.length; j++) {
-        if (charList[j] === 'https://swapi.co/api/people/18/' || charList[j] === 'http://swapi.co/api/people/18/') {
-          countWedge += 1;
+    const content = JSON.parse(body);
+    content.results.forEach((film) => {
+      film.characters.forEach((character) => {
+        if (character.includes(18)) {
+          num += 1;
         }
-      }
-    }
-    console.log(countWedge);
+      });
+    });
+    console.log(num);
   }
 });
